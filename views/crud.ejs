@@ -8,7 +8,7 @@
     />
 
     <!-- 3. Título de la página -->
-    <title> </title>
+    <title><%= title %> </title>
 
     <link rel="stylesheet" href="stylesheets/crud-style.css" />
 
@@ -38,13 +38,15 @@
   </head>
   <body>
     <div class="container-xl">
+      <!-- 1. Navbar -->
+      <%- include('partials/navbar.ejs') %>
       <div class="table-responsive">
         <div class="table-wrapper">
           <div class="table-title">
             <div class="row">
               <div class="col-sm-6">
                 <!-- 4. Título de la tabla -->
-                <h2></h2>
+                <h2><%= title %></h2>
               </div>
               <div class="col-sm-6">
                 <a
@@ -80,6 +82,7 @@
             </thead>
             <!-- 5. Arreglo de usuarios -->
             <tbody>
+                <% usersArray.forEach( user => { %>
               <tr>
                 <td>
                   <span class="custom-checkbox">
@@ -92,9 +95,13 @@
                     <label for="checkbox1"></label>
                   </span>
                 </td>
-                <td>XX</td>
-                <td>NN</td>
-                <td>RR</td>
+                <td><%= user.iduser %></td>
+                <td><%= user.name %></td>
+                <td><!-- 
+                    Dato relacionado
+   
+                    users->users_roles->roles.name
+                 --></td>
                 <td>
                   <a href="#editEmployeeModal" class="edit" data-toggle="modal"
                     ><i
@@ -117,6 +124,7 @@
                   >
                 </td>
               </tr>
+              <% }) %>
             </tbody>
           </table>
           <div class="clearfix">
