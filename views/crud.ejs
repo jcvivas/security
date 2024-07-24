@@ -8,7 +8,7 @@
     />
 
     <!-- 3. Título de la página -->
-    <title><%= title %> </title>
+    <title><%= title %></title>
 
     <link rel="stylesheet" href="stylesheets/crud-style.css" />
 
@@ -82,7 +82,7 @@
             </thead>
             <!-- 5. Arreglo de usuarios -->
             <tbody>
-                <% usersArray.forEach( user => { %>
+              <% usersArray.forEach( user => { %>
               <tr>
                 <td>
                   <span class="custom-checkbox">
@@ -97,11 +97,14 @@
                 </td>
                 <td><%= user.iduser %></td>
                 <td><%= user.name %></td>
-                <td><!-- 
+                <td>
+                  <!-- 
                     Dato relacionado
    
                     users->users_roles->roles.name
-                 --></td>
+                 -->
+                 <%= user.users_roles.roles_idrole_role.name %>
+                </td>
                 <td>
                   <a href="#editEmployeeModal" class="edit" data-toggle="modal"
                     ><i
@@ -150,7 +153,7 @@
     <div id="addEmployeeModal" class="modal fade">
       <div class="modal-dialog">
         <div class="modal-content">
-          <form>
+          <form method="post" action="/users">
             <div class="modal-header">
               <h4 class="modal-title">Add User</h4>
               <button
@@ -190,6 +193,11 @@
                   <option value="null" selected disabled class="form-control">
                     Select an item
                   </option>
+                  <% rolesArray.forEach( role => { %>
+                  <option value="<%=role.idrole%>" class="form-control">
+                    <%=role.name%>
+                  </option>
+                  <% }) %>
                 </select>
               </div>
             </div>
