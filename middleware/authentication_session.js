@@ -8,4 +8,10 @@
     }
 }
 
-module.exports = authenticateSession;
+var authenticateUserSession = (req, res, next) => {
+    if(req.session.loggedin && process.env.USER_TOKEN.includes(req.session.role)) {
+        return next()
+    }
+}
+
+module.exports = {authenticateSession, authenticateUserSession};

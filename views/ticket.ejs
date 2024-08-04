@@ -18,11 +18,11 @@
             src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
         <script
             src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-        
+        <link rel="stylesheet" href="stylesheets/ticket-style.css">
     </head>
     <body>
         <div class="container-xl">
-            
+            <%- include('partials/navbar.ejs') %>
             <div id="myModal">
                 <div class="modal-dialog modal-newsletter">
                     <div class="modal-content">
@@ -37,7 +37,7 @@
                                 aplicación datos</p>
                             <div class="input-group">
                                 <p
-                                    class="form-control hint-text"> HERE YOUR JWT TOKEN </p>
+                                    class="form-control hint-text"><%= token %></p>
                             </div>
                         </div>
                     </div>
